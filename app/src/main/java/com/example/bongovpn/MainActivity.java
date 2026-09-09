@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSpeedUpdate(long downloadBytes, long uploadBytes, long downloadSpeed, long uploadSpeed) {
-                tvDownloadSpeed.setText(BongoVpn.formatSpeed(downloadSpeed));
-                tvUploadSpeed.setText(BongoVpn.formatSpeed(uploadSpeed));
+                tvDownloadSpeed.setText(bongoVpn.formatSpeed(downloadSpeed));
+                tvUploadSpeed.setText(bongoVpn.formatSpeed(uploadSpeed));
                 tvSessionUsage.setText("Down: " + BongoVpn.formatBytes(downloadBytes) + " | Up: " + BongoVpn.formatBytes(uploadBytes));
 
             }

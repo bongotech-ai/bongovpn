@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF">
+
+    <item>
+        <selector>
+            <!-- When Disabled -->
+            <item android:state_enabled="false">
+                <shape>
+                    <solid android:color="#BDBDBD" />
+                    <corners android:radius="12dp" />
+                </shape>
+            </item>
+
+            <!-- When Enabled -->
+            <item>
+                <shape>
+                    <solid android:color="@color/connect_button_color" />
+                    <corners android:radius="12dp" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+
+</ripple>

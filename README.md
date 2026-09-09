@@ -201,7 +201,7 @@ class MainActivity : AppCompatActivity() {
 bongoVpn.attachFromAsset("japan.ovpn", "vpn_user", "vpn_pass")
 
 //Or pass string directly
-// bongoVpn.attachFromString("your_entire_ovpn_file_as_string", "vpn_user", "vpn_pass");
+// bongoVpn.attachFromString("your_entire_ovpn_file_as_string", "vpn_user", "vpn_pass")
 
 // Setup event callbacks
 bongoVpn.setVpnListener(object : BongoVpn.VpnListener {

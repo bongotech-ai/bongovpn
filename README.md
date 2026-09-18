@@ -16,7 +16,7 @@ Add the dependency to your app module's `build.gradle` file (Groovy / Kotlin DSL
 
 ```groovy
 dependencies {
-    implementation 'ai.bongotech:bongovpn:1.0.2'
+    implementation 'ai.bongotech:bongovpn:1.0.3'
 }
 ```
 
@@ -143,7 +143,7 @@ bongoVpn.setVpnListener(new BongoVpn.VpnListener() {
 });
 ```
 
-### 3. Connect, Disconnect & Cleanup
+### 3. Connect, Disconnect, Cleanup & Connection Status
 ```java
 // Connect
 private void connectVpn() {
@@ -167,6 +167,12 @@ protected void onDestroy() {
         bongoVpn.release();
     }
 }
+
+// Check VPN Status
+if (bongoVpn.isConnected()) {
+// do something
+}
+
 ```
 
 </details>
@@ -234,7 +240,7 @@ bongoVpn.setVpnListener(object : BongoVpn.VpnListener {
 })
 ```
 
-### 3. Connect, Disconnect & Cleanup
+### 3. Connect, Disconnect, Cleanup & Connection Status
 ```kotlin
 // Connect
 private fun connectVpn() {
@@ -255,6 +261,13 @@ override fun onDestroy() {
     super.onDestroy()
     bongoVpn.release()
 }
+
+
+// Check VPN Status
+if (bongoVpn.isConnected()) {
+// do something
+}
+
 ```
 
 </details>

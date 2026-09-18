@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     MaterialButton btnConnect;
     TextView tvDownloadSpeed, tvUploadSpeed,  tvSessionUsage;
 
-    boolean isConnected = false;
     public static String VPN_USERNAME = "vpn";
     public static String VPN_PASSWORD = "vpn";
     private BongoVpn bongoVpn = new BongoVpn(this);
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onVpnConnected() {
                 btnConnect.setEnabled(true);
-                isConnected = true;
                 btnConnect.setText("Disconnect");
                 btnConnect.setTextColor(Color.RED);
             }
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onVpnStopped() {
                 btnConnect.setEnabled(true);
-                isConnected = false;
                 btnConnect.setText("Connect VPN");
                 btnConnect.setTextColor(Color.BLACK);
             }
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 btnConnect.setEnabled(false);
-                if (isConnected) {
+                if (bongoVpn.isConnected()) {
                     btnConnect.setText("Disconnecting...");
                     stopVpn();
                 } else {

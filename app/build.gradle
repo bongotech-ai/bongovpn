@@ -49,5 +49,5 @@ dependencies {
     androidTestImplementation libs.ext.junit
 
     //Bongo VPN Library
-    implementation 'ai.bongotech:bongovpn:1.0.2'
+    implementation 'ai.bongotech:bongovpn:1.0.3'
 }

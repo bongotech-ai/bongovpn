@@ -16,8 +16,6 @@ class MainActivity_Kotlin : AppCompatActivity() {
     private lateinit var tvDownloadSpeed: TextView
     private lateinit var tvUploadSpeed: TextView
     private lateinit var tvSessionUsage: TextView
-
-    private var isConnected = false
     private lateinit var bongoVpn: BongoVpn
 
     companion object {
@@ -61,14 +59,12 @@ class MainActivity_Kotlin : AppCompatActivity() {
         bongoVpn.setVpnListener(object : BongoVpn.VpnListener {
             override fun onVpnConnected() {
                 btnConnect.isEnabled = true
-                isConnected = true
                 btnConnect.text = "Disconnect"
                 btnConnect.setTextColor(Color.RED)
             }
 
             override fun onVpnStopped() {
                 btnConnect.isEnabled = true
-                isConnected = false
                 btnConnect.text = "Connect VPN"
                 btnConnect.setTextColor(Color.BLACK)
             }
@@ -97,7 +93,7 @@ class MainActivity_Kotlin : AppCompatActivity() {
         // Connect/Disconnect Button
         btnConnect.setOnClickListener {
             btnConnect.isEnabled = false
-            if (isConnected) {
+            if (bongoVpn.isConnected) {
                 btnConnect.text = "Disconnecting..."
                 stopVpn()
             } else {

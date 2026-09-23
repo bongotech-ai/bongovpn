@@ -1,0 +1,40 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main" ] # অথবা আপনার ডিফল্ট ব্রাঞ্চের নাম (যেমন: master) হলে সেটি দিন
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build APK with Gradle
+    runs-on: ubuntu-latest
+
+    steps:
+    # ১. প্রজেক্ট কোড চেকআউট করা
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # ২. JDK 17 সেটআপ করা (অ্যান্ড্রয়েড বিল্ডের জন্য প্রয়োজন)
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+        cache: 'gradle'
+
+    # ৩. Gradle Wrapper ফাইলে পারমিশন দেওয়া
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    # ৪. Debug APK বিল্ড করা
+    - name: Build Debug APK with Gradle
+      run: ./gradlew assembleDebug
+
+    # ৫. বিল্ড করা APK ফাইলটি GitHub Artifacts-এ সেভ করা
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/app-debug.apk
